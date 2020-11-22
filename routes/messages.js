@@ -63,7 +63,7 @@ const ExpressError = require("../expressError");
  *
  **/
 
-router.post('/:id/read', ensureLoggedIn, (req, res, next) => {
+router.post('/:id/read', ensureLoggedIn, async (req, res, next) => {
     try {
         let username = req.user.username;
         let msg = await Message.get(req.params.id);
@@ -78,3 +78,5 @@ router.post('/:id/read', ensureLoggedIn, (req, res, next) => {
         return next(e)
     }
 })
+
+module.exports = router;
